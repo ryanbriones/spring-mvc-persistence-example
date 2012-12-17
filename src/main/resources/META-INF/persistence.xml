@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="fooDev" transaction-type="RESOURCE_LOCAL">
+        <class>com.ryanbriones.foo.domain.Word</class>
+        <properties>
+            <property name="javax.persistence.logging.level" value="INFO" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://localhost/word-analysis" />
+            <property name="javax.persistence.jdbc.user" value="ryanbriones" />
+        </properties>
+    </persistence-unit>
+</persistence>
