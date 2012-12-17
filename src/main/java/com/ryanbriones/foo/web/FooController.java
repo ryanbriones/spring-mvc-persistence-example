@@ -1,21 +1,23 @@
 package com.ryanbriones.foo.web;
 
 import com.ryanbriones.foo.domain.Word;
+import com.ryanbriones.foo.repository.WordRepository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/")
 public class FooController {
-  @PersistenceContext
-  private EntityManager entityManager;
+  @Autowired
+  WordRepository wordRepository;
 
   public FooController() {}
 
@@ -24,7 +26,7 @@ public class FooController {
     ModelAndView index = new ModelAndView();
     index.setViewName("foo/index");
 
-    Collection<Word> allWords = (Collection<Word>) entityManager.createNamedQuery("Word.findAll").getResultList();
+    List<Word> allWords = wordRepository.findAll();
     index.addObject("words", allWords);
     return index;
   }

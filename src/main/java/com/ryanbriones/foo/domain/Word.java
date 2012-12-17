@@ -18,8 +18,8 @@ public class Word implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
-  public int getId() { return id; }
+  private Long id;
+  public Long getId() { return id; }
 
   private String value;
   public String getValue() { return value; }
@@ -45,12 +45,12 @@ public class Word implements Serializable {
 
     final Word other = (Word) otherObj;
 
-    return id == other.getId();
+    return id.equals(other.getId());
   }
 
   @Override
   public int hashCode() {
-    return new Integer(id).hashCode();
+    return id.hashCode();
   }
 
   public String toString() {
